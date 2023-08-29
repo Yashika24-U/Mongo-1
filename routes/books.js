@@ -1,4 +1,6 @@
+
 import express from "express"
+import {auth} from "../middleware/auth.js"
 import { getAllBooks,
     getBooksById,
     deleteBooksById, 
@@ -6,7 +8,7 @@ import { getAllBooks,
     updateBookById } from "../helper.js" 
 const router = express.Router()
 
-router.get("/", async(req,res) =>{
+router.get("/",auth,async(req,res) =>{
     const{language,rating} = req.query;
     console.log(req.query,language)
   
@@ -22,7 +24,7 @@ router.get("/", async(req,res) =>{
   
   // get Books by ID
   
-  router.get("/:id", async(req,res)=>{
+  router.get("/:id",auth, async(req,res)=>{
   const {id} = req.params
   console.log(req.params)
   const book = await getBooksById(id);
@@ -45,7 +47,7 @@ router.get("/", async(req,res) =>{
   
   // POST
   
-  router.post("/",async(req,res)=>{
+  router.post("/",auth,async(req,res)=>{
     const newbook = req.body
     console.log(newbook)
   
@@ -55,7 +57,7 @@ router.get("/", async(req,res) =>{
   
     // PUT 
   
-  router.put("/:id",async(req,res)=>{
+  router.put("/:id",auth,async(req,res)=>{
     const {id} = req.params
     const updatebook = req.body
     console.log(updatebook)
