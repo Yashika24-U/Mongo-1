@@ -24,7 +24,8 @@ router.get("/",auth,async(req,res) =>{
   
   // get Books by ID
   
-  router.get("/:id",auth, async(req,res)=>{
+  // router.get("/:id",auth, async(req,res)=>{
+  router.get("/:id", async(req,res)=>{
   const {id} = req.params
   console.log(req.params)
   const book = await getBooksById(id);
@@ -47,7 +48,8 @@ router.get("/",auth,async(req,res) =>{
   
   // POST
   
-  router.post("/",auth,async(req,res)=>{
+  // router.post("/",auth,async(req,res)=>{
+    router.post("/",async(req,res)=>{
     const newbook = req.body
     console.log(newbook)
   
