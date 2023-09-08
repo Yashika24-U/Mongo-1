@@ -8,7 +8,9 @@ import { getAllBooks,
     updateBookById } from "../helper.js" 
 const router = express.Router()
 
-router.get("/",auth,async(req,res) =>{
+
+router.get("/",async(req,res) =>{
+// router.get("/",auth,async(req,res) =>{
     const{language,rating} = req.query;
     console.log(req.query,language)
   
